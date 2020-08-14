@@ -5,7 +5,9 @@ def q1
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
-
+  # pushメソッドで追加しました。出力はputsメソッドよりpメソッドが見やすかったので選びました。
+  p names.push("斎藤")  
+  
 end
 
 def q2
@@ -13,17 +15,20 @@ def q2
   array2 = ["bird", "bat", "tiger"]
 
   # 以下に回答を記載
-
+  # array1.concat(array2)も試してます。演算子＋を使いました。    
+  p array = array1 + array2    
+  
 end
 
 def q3
   numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9]
 
   # 以下に回答を記載
+  # array.count(obj)のメソッドを用いて書いてみました。
+  puts "配列_numbersの中3は#{numbers.count(3)}個あります。"
 
 end
 
-def q4
   sports = ["サッカー", "フットサル", nil, "野球", "バスケ", nil, "バレー"]
 
   # 以下に回答を記載
