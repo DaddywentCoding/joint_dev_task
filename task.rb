@@ -34,7 +34,7 @@ def q4
 
   # 以下に回答を記載
   # 自身の内容を変える破壊的メソッドarray.delete()メソッドを使いました。
-  sports.delete(nil)
+  sports.compact!
   # 以下は変更しないで下さい
   p sports
 end
@@ -65,7 +65,7 @@ def q7
 
   # 以下に回答を記載
   # String#to_iメソッドを見つけました。あとmapをmap!に変えて破壊的メソッドにしました。
-  array.map! {|s| s.to_i}
+  array.map!(&:to_i)
   # 以下は変更しないで下さい
   p array
 end
@@ -84,7 +84,10 @@ end
 def q9
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
-  # 以下に回答を記載
+  # 以下に回答を記載  
+  names.each.with_index(1) do |name, i|
+    puts "会員No.#{i} #{name}さん"    
+  end
   
 end
 
@@ -92,13 +95,26 @@ def q10
   foods = %w(いか たこ うに しゃけ うにぎり うに軍艦 うに丼)
 
   # 以下に回答を記載
-
+  # include?メソッドで調べて"うに"が含まれていればtrueを返すのでif問を用いました。
+  foods.each do |food| 
+    if food.include?("うに")
+      puts "#{food} : 好物です"
+      else
+        puts "#{food} : まぁまぁ好きです"
+    end    
+  end
 end
 
 def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
+  sports.flatten! 
+  sports.uniq!
+  puts "ユーザーの趣味一覧"
+  sports.each.with_index(1) do |sport, i|    
+    puts "No#{i} #{sport}"
+  end
 
 end
 
