@@ -109,8 +109,7 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-  sports.flatten! 
-  sports.uniq!
+  sports.flatten!.uniq! #二つのメソッドをまとめました！
   puts "ユーザーの趣味一覧"
   sports.each.with_index(1) do |sport, i|    
     puts "No#{i} #{sport}"
@@ -122,7 +121,7 @@ def q12
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
-
+  puts data[:user][:name]
 end
 
 def q13
@@ -130,14 +129,20 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-
+  user_data[:age] = update_data[:age]
+  user_data[:address] = update_data[:address]
+  puts user_data
 end
 
 def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
-
+  data_key = []
+  data.each_key do |key|
+    data_key << key
+  end
+  p data_key
 end
 
 def q15
@@ -145,7 +150,26 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-
+  # data1から処理します。
+  data1_key = []
+  data1.each_key do |key|
+    data1_key << key
+  end
+  if data1_key.any? { |k| k == :age}
+    p "OK"
+  else
+    p "NG"
+  end
+  # data2も処理します。
+  data2_key = []
+  data2.each_key do |key|
+    data2_key << key
+  end  
+  if data2_key.any? { |k| k == :age}
+    p "OK"
+  else
+    p "NG"
+  end
 end
 
 def q16
@@ -157,7 +181,11 @@ def q16
   ]
 
   # 以下に回答を記載
-
+  users.each do |user|
+    name = user[:name]
+    age = user[:age]
+    puts "私の名前は#{name}です。年齢は#{age}歳です。"
+  end  
 end
 
 class UserQ17
