@@ -97,11 +97,7 @@ def q10
   # 以下に回答を記載
   # include?メソッドで調べて"うに"が含まれていればtrueを返すのでif問を用いました。
   foods.each do |food| 
-    if food.include?("うに")
-      puts "#{food} : 好物です"
-      else
-        puts "#{food} : まぁまぁ好きです"
-    end    
+    puts food.include?("うに") ? "#{food} : 好物です" : "#{food} : まぁまぁ好きです" 
   end
 end
 
@@ -139,7 +135,7 @@ def q14
 
   # 以下に回答を記載
   # keysメソッドはキーだけ取って配列を作ってくれます。
-  # eachでわざわざ回したのでとっても便利だと感じます！
+  # eachでわざわざ回したので恥ずかしいです；
   # もっといろんな単語で検索できるように考えます！
   p data_keys = data.keys
   
@@ -149,19 +145,9 @@ def q15
   data1 = { name: "saitou", hobby: "soccer", age: 33, role: "admin" }
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
-  # 以下に回答を記載
-  if data1.key?(:age)
-    puts "OK"
-  else
-    puts "NG"
-  end
-
-  if data2.key?(:age)
-    puts "OK"
-  else
-    puts "NG"
-  end   
-
+  # 以下に回答を記載 # 三項演算子を用いる
+  puts data1.key?(:age) ? "OK" : "NG"
+  puts data2.key?(:age) ? "OK" : "NG"
 end
 
 def q16
@@ -181,6 +167,19 @@ end
 
 class UserQ17
   # 以下に回答を記載
+  def initialize(params)
+    @name = params[:name]
+    @age = params[:age]
+    @gender = params[:gender]
+  end
+
+  def info
+    puts <<~TEXT
+      名前: #{@name}
+      年齢: #{@age}
+      性別: #{@gender}
+    TEXT
+  end
 
 end
 
@@ -196,7 +195,18 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 
+  def introduce
+    if @age >= 20    
+      "こんにちは，#{@name}と申します。宜しくお願いいたします。"
+    else
+      "はいさいまいど〜，#{@name}です！！！"
+    end        
+  end  
 end
 
 def q18
@@ -210,10 +220,17 @@ end
 
 class Item
   # 以下を修正して下さい
+  # attr_readerを用いてゲッターを省略
+  attr_reader :name
 
-  def initialize(name)
-    @name = name
+  def initialize(params)
+    @name = params[:name]
   end
+
+  # def name
+  #   @name
+  # end
+
 end
 
 def q19
