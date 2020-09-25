@@ -167,7 +167,7 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  def initialize(params)
+  def initialize(**params)
     @name = params[:name]
     @age = params[:age]
     @gender = params[:gender]
@@ -195,7 +195,7 @@ end
 
 class UserQ18
   # 以下に回答を記載
-  def initialize(params)
+  def initialize(**params)
     @name = params[:name]
     @age = params[:age]
   end
@@ -223,7 +223,7 @@ class Item
   # attr_readerを用いてゲッターを省略
   attr_reader :name
 
-  def initialize(params)
+  def initialize(**params)
     @name = params[:name]
   end
 
@@ -241,12 +241,36 @@ end
 
 class UserQ20
   # 以下に回答を記載
+  # class UserQ20 から @name, @ageを参照するため attr_readerを使用
+  attr_reader :name
+  attr_reader :age
 
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]     
+  end
 end
 
 class Zoo
   # 以下に回答を記載
+  def initialize(**params)
+    @name = params[:name]
+    @entry_fee = params[:entry_fee]
+  end
 
+  def info_entry_fee(user)    
+    if user.age >= 0 && user.age <= 5       # 幼児(0〜5歳)
+      determined_entry_fee = @entry_fee[:infant]
+    elsif user.age >= 6 && user.age <= 12   # 子供(6〜12歳)
+      determined_entry_fee = @entry_fee[:children]
+    elsif user.age >= 13 && user.age <= 64  # 成人(13〜64歳)
+      determined_entry_fee = @entry_fee[:adult]
+    else user.age >= 65 && user.age <= 120  # シニア(65〜120歳)
+      determined_entry_fee = @entry_fee[:senior]
+    end
+    
+    puts  "#{user.name}さんの入場料金は #{determined_entry_fee} 円です。"
+  end
 end
 
 
