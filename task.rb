@@ -242,8 +242,7 @@ end
 class UserQ20
   # 以下に回答を記載
   # class UserQ20 から @name, @ageを参照するため attr_readerを使用
-  attr_reader :name
-  attr_reader :age
+  attr_reader :name, :age  # １行にしました。
 
   def initialize(**params)
     @name = params[:name]
@@ -258,14 +257,16 @@ class Zoo
     @entry_fee = params[:entry_fee]
   end
 
-  def info_entry_fee(user)    
-    if user.age >= 0 && user.age <= 5       # 幼児(0〜5歳)
+  def info_entry_fee(user)
+    # if文の代わりにcase文を使いました。
+    case user.age
+    when 0..5    # 幼児(0〜5歳)
       determined_entry_fee = @entry_fee[:infant]
-    elsif user.age >= 6 && user.age <= 12   # 子供(6〜12歳)
+    when 6..12   # 子供(6〜12歳)
       determined_entry_fee = @entry_fee[:children]
-    elsif user.age >= 13 && user.age <= 64  # 成人(13〜64歳)
+    when 13..64  # 成人(13〜64歳)
       determined_entry_fee = @entry_fee[:adult]
-    else user.age >= 65 && user.age <= 120  # シニア(65〜120歳)
+    when 65..120 # シニア(65〜120歳)
       determined_entry_fee = @entry_fee[:senior]
     end
     
