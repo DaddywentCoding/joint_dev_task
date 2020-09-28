@@ -258,19 +258,19 @@ class Zoo
   end
 
   def info_entry_fee(user)
-    # if文の代わりにcase文を使いました。
+    # 変数にそのままcase文を代入
+    determined_entry_fee =
     case user.age
     when 0..5    # 幼児(0〜5歳)
-      determined_entry_fee = @entry_fee[:infant]
+      @entry_fee[:infant]
     when 6..12   # 子供(6〜12歳)
-      determined_entry_fee = @entry_fee[:children]
+      @entry_fee[:children]
     when 13..64  # 成人(13〜64歳)
-      determined_entry_fee = @entry_fee[:adult]
+      @entry_fee[:adult]
     when 65..120 # シニア(65〜120歳)
-      determined_entry_fee = @entry_fee[:senior]
+      @entry_fee[:senior]
     end
-    
-    puts  "#{user.name}さんの入場料金は #{determined_entry_fee} 円です。"
+    puts "#{user.name}さんの入場料金は #{determined_entry_fee} 円です。"
   end
 end
 
